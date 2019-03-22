@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class ItemCarrinho {
 	
 	@Id
-	@Column(name= "cd_codigo")
+	@Column(name= "cd_item_carrinho")
 	@GeneratedValue(generator="sq_item_carrinho", strategy = GenerationType.SEQUENCE)
 	private int codigo;
 	
@@ -32,8 +32,68 @@ public class ItemCarrinho {
 	private CarrinhoCompras carrinho;
 	
 	
-	@OneToMany(mappedBy= "itemCarrinho")
+	@ManyToOne
 	@JoinColumn(name="cd_codigo", nullable = false)
 	private Produto produto;
+
+
+	public ItemCarrinho() {
+		super();
+		
+	}
+
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+
+	public double getValor() {
+		return valor;
+	}
+
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+
+	public CarrinhoCompras getCarrinho() {
+		return carrinho;
+	}
+
+
+	public void setCarrinho(CarrinhoCompras carrinho) {
+		this.carrinho = carrinho;
+	}
+
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+	
+	
+	
+	
 	
 }

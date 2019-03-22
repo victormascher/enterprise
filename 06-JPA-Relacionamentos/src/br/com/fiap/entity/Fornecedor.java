@@ -17,8 +17,8 @@ import javax.persistence.Table;
 public class Fornecedor {
 	
 	@Id
-	@Column(name = "cd-codigo")
-	@GeneratedValue (generator="sq_forncedor", strategy = GenerationType.SEQUENCE)
+	@Column(name = "cd_fornecedor")
+	@GeneratedValue (generator="sq_fornecedor", strategy = GenerationType.SEQUENCE)
 	private int codigo;
 	
 	@Column(name="nm_nome")
@@ -30,4 +30,59 @@ public class Fornecedor {
 	
 	@ManyToMany
 	private List<Produto> produto;
+
+
+	
+	
+	
+	public Fornecedor() {
+		super();
+		
+	}
+
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
+	
+	
+	
+	
+	
+	
 }

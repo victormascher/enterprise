@@ -25,7 +25,7 @@ import org.hibernate.annotations.CreationTimestamp;
 public class CarrinhoCompras {
 	
 	@Id
-	@Column(name="cd_codigo")
+	@Column(name="cd_carrinho_compras")
 	@GeneratedValue (generator = "sq_carrinho_compras", strategy = GenerationType.SEQUENCE)
 	private int codigo;
 	
@@ -43,5 +43,64 @@ public class CarrinhoCompras {
 	
 	@OneToMany(mappedBy="carrinho")
 	private List<ItemCarrinho> itemCarrinho;
+
+	
+	
+	
+	
+	
+	public CarrinhoCompras(Cliente cliente,double valorT) {
+		super();
+		this.cliente = cliente;
+		this.valorT = valorT;
+		
+	}
+
+	public CarrinhoCompras() {
+		super();
+			}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public Calendar getData() {
+		return data;
+	}
+
+	public void setData(Calendar data) {
+		this.data = data;
+	}
+
+	public double getValorT() {
+		return valorT;
+	}
+
+	public void setValorT(double valorT) {
+		this.valorT = valorT;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<ItemCarrinho> getItemCarrinho() {
+		return itemCarrinho;
+	}
+
+	public void setItemCarrinho(List<ItemCarrinho> itemCarrinho) {
+		this.itemCarrinho = itemCarrinho;
+	}
+	
+	
+	
 	
 }

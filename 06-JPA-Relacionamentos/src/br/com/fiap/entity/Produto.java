@@ -19,12 +19,11 @@ import javax.persistence.Table;
 public class Produto {
 	
 	@Id
-	@Column(name = "cd_codigo")
+	@Column(name = "cd_produto")
 	@GeneratedValue(generator ="sq_produto", strategy = GenerationType.SEQUENCE)
 	private int codigo;
 	
 	@OneToMany(mappedBy = "produto")
-	@JoinColumn(name = "cd_codigo", nullable = false)
 	private List<ItemCarrinho> itemCarrinho;
 	
 	@Column(name ="nm_nome")
@@ -35,5 +34,57 @@ public class Produto {
 	
 	@ManyToMany
 	private List<Fornecedor> Forncedor;
+
+	
+	
+	
+	
+	
+	
+	public Produto() {
+		super();
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public List<ItemCarrinho> getItemCarrinho() {
+		return itemCarrinho;
+	}
+
+	public void setItemCarrinho(List<ItemCarrinho> itemCarrinho) {
+		this.itemCarrinho = itemCarrinho;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public List<Fornecedor> getForncedor() {
+		return Forncedor;
+	}
+
+	public void setForncedor(List<Fornecedor> forncedor) {
+		Forncedor = forncedor;
+	}
+	
+	
 	
 }
