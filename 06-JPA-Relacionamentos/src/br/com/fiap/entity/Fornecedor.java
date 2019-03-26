@@ -2,11 +2,14 @@ package br.com.fiap.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -28,13 +31,20 @@ public class Fornecedor {
 	private String cnpj;
 	
 	
-	@ManyToMany
-	private List<Produto> produto;
+	@ManyToMany(mappedBy ="fornecedores")
+	private List<Produto> produtos;
 
 
 	
 	
 	
+	public Fornecedor(String nome, String cnpj) {
+		super();
+		this.nome = nome;
+		this.cnpj = cnpj;
+	}
+
+
 	public Fornecedor() {
 		super();
 		
@@ -71,15 +81,16 @@ public class Fornecedor {
 	}
 
 
-	public List<Produto> getProduto() {
-		return produto;
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
 
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
-	
+
+
 	
 	
 	

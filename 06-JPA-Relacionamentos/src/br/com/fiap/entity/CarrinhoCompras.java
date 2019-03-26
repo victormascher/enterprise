@@ -45,6 +45,10 @@ public class CarrinhoCompras {
 	private List<ItemCarrinho> itemCarrinho;
 
 	
+	public void addItem(ItemCarrinho item) {
+		itemCarrinho.add(item);
+		
+	}
 	
 	
 	

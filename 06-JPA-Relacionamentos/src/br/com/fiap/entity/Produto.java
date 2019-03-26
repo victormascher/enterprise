@@ -2,12 +2,14 @@ package br.com.fiap.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -32,8 +34,10 @@ public class Produto {
 	@Column(name = "vl_valor")
 	private double valor;
 	
-	@ManyToMany
-	private List<Fornecedor> Forncedor;
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "T_PRODUTO_FORNECEDOR", joinColumns = @JoinColumn(name="cd_produto"),
+	inverseJoinColumns = @JoinColumn(name= "cd_fornecedor"))
+	private List<Fornecedor> forncedores;
 
 	
 	
@@ -41,6 +45,13 @@ public class Produto {
 	
 	
 	
+	public Produto(String nome, double valor, List<Fornecedor> forncedores) {
+		super();
+		this.nome = nome;
+		this.valor = valor;
+		this.forncedores = forncedores;
+	}
+
 	public Produto() {
 		super();
 	}
@@ -77,14 +88,14 @@ public class Produto {
 		this.valor = valor;
 	}
 
-	public List<Fornecedor> getForncedor() {
-		return Forncedor;
+	public List<Fornecedor> getForncedores() {
+		return forncedores;
 	}
 
-	public void setForncedor(List<Fornecedor> forncedor) {
-		Forncedor = forncedor;
+	public void setForncedores(List<Fornecedor> forncedores) {
+		this.forncedores = forncedores;
 	}
-	
+
 	
 	
 }

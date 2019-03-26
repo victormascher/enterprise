@@ -1,5 +1,6 @@
 package br.com.fiap.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table (name = "T_ITEM_CARRINHO")
@@ -32,7 +35,7 @@ public class ItemCarrinho {
 	private CarrinhoCompras carrinho;
 	
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="cd_codigo", nullable = false)
 	private Produto produto;
 
