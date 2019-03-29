@@ -1,9 +1,13 @@
 package br.com.fiap.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 public class CasoTeste {
 	
@@ -15,6 +19,13 @@ public class CasoTeste {
 	
 	@Column(name ="nm_caso")
 	private String nome;
+	
+	@ManyToOne
+	private Sistema sistema;
+	
+	@OneToMany(mappedBy= "casoTeste")
+	private List<ItemTeste> itemTeste;
+	
 	
 	@Column(name= "ds_caso")
 	private String descricao;

@@ -38,11 +38,6 @@ public class Produto {
 	@JoinTable(name = "T_PRODUTO_FORNECEDOR", joinColumns = @JoinColumn(name="cd_produto"),
 	inverseJoinColumns = @JoinColumn(name= "cd_fornecedor"))
 	private List<Fornecedor> forncedores;
-
-	
-	
-	
-	
 	
 	
 	public Produto(String nome, double valor, List<Fornecedor> forncedores) {

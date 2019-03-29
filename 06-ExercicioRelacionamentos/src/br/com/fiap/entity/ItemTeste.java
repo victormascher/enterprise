@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 public class ItemTeste {
 	
@@ -15,7 +17,11 @@ public class ItemTeste {
 	@Column(name = "ds_teste")
 	private String descricao;
 
+	@ManyToOne
+	private CasoTeste casoTeste;
 	
+	@ManyToMany
+	private Usuario user;
 	
 	
 	public ItemTeste(String teste) {

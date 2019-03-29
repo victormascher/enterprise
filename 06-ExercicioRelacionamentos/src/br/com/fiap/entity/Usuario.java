@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 public class Usuario {
 
@@ -15,6 +18,11 @@ public class Usuario {
 	
 	@Column(name = "nm_user")
 	private String nome;
+	
+	@ManyToMany
+	@JoinTable(name="T_USUARIO", joinColumns = @JoinColumn(name="cd_user"), 
+	inverseJoinColumns = @JoinColumn(name= "cd_teste"))
+	private ItemTeste itemTeste;
 
 	public Usuario(String nome) {
 		super();

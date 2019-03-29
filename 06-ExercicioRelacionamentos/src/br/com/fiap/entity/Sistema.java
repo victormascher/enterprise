@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 public class Sistema {
 	
@@ -13,7 +14,8 @@ public class Sistema {
 	@GeneratedValue(generator = "sq_sistema", strategy = GenerationType.SEQUENCE)
 	private int sistema;
 	
-	
+	@OneToMany(mappedBy= "sistema")
+	private CasoTeste caso;
 	
 	@Column(name= "nm_sistema")
 	private String nome;
