@@ -1,7 +1,10 @@
 package br.com.fiap.teste;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -30,6 +33,17 @@ class ReservaDAOTeste {
 		List<Reserva> lista = dao.listar();
 		
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	void searchDate() {
+		Calendar data = new GregorianCalendar(2017, Calendar.MARCH, 20);
+		List<Reserva> lista =  dao.searchDate(data);
+		
+		for (Reserva reserva : lista) {
+			assertEquals(data, reserva.getDataReserva());
+		}
+		
 	}
 
 }
