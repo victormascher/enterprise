@@ -22,12 +22,24 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 
 	@Override
 	public List<Cliente> buscarNome(Cliente nome) {
-		TypedQuery<Cliente> sql = em.createQuery("from T_CLIENTE c where c.nome LIKE = :nc", Cliente.class);
+		TypedQuery<Cliente> sql = em.createQuery("from T_CLIENTE c where upper(c.nome) LIKE = :nc", Cliente.class);
 		sql.setParameter("nc", "%" + nome + "%");
 		return null;
 	}
 
-	
-	
-	
+	@Override
+	public List<Cliente> buscarNomeECidade(String nome, String cidade) {
+		return  em.createNamedQuery("Cliente.nomeCidade", Cliente.class)
+				.setParameter("S","%" + nome + "%")
+				.setParameter("C", "%" + cidade + "%")
+				.getResultList();
+		
+	}
+
+	@Override
+	public List<Cliente> buscarPorEstados(List<String> estado) {
+		return  em.createNamedQuery("Cliente.porEstado", Cliente.class)
+				.setParameter("E", estado )
+				.getResultList();
+	}
 }
